@@ -17,11 +17,13 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3",
+		"php": ">=7.1",
 		"ext-json": "*",
 		"ext-curl": "*"
 	},
 	"autoload": {
-		"classmap": ["paylane/PayLaneRestClient.php"]
+		"psr-4": {
+			"src/": "PayLane"
+		}
 	}
 }
