@@ -1,5 +1,5 @@
 {
-	"name": "paylane/client",
+	"name": "paylane/php7Client",
 	"description": "PayLane REST Client for PHP",
 	"license": "MIT",
 	"authors": [
