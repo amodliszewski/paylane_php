@@ -47,32 +47,26 @@ class RestClient
     /** @var bool */
     protected $isSuccess = false;
 
-    public function __construct(string $username, string $password, string $endpoint = 'https://direct.paylane.com/rest/')
-    {
+    public function __construct(
+        string $username,
+        string $password,
+        string $endpoint = 'https://direct.paylane.com/rest/'
+    ) {
         $this->username = $username;
         $this->password = $password;
         $this->apiUrl = $endpoint;
     }
 
-    /**
-     * Sets SSL verify
-     */
-    public function setSSLverify(bool $sslVerify)
+    public function setSSLverify(bool $sslVerify): void
     {
         $this->sslVerify = $sslVerify;
     }
 
-    /**
-     * Request state getter
-     */
     public function isSuccess(): bool
     {
         return $this->isSuccess;
     }
 
-    /**
-     * Performs card sale
-     */
     public function cardSale(array $params): array
     {
         return $this->call(
@@ -82,9 +76,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs card sale by token
-     */
     public function cardSaleByToken(array $params): array
     {
         return $this->call(
@@ -94,9 +85,6 @@ class RestClient
         );
     }
 
-    /**
-     * Card authorization
-     */
     public function cardAuthorization(array $params): array
     {
         return $this->call(
@@ -106,9 +94,6 @@ class RestClient
         );
     }
 
-    /**
-     * Card authorization by token
-     */
     public function cardAuthorizationByToken(array $params): array
     {
         return $this->call(
@@ -118,9 +103,6 @@ class RestClient
         );
     }
 
-    /**
-     * PayPal authorization
-     */
     public function paypalAuthorization(array $params): array
     {
         return $this->call(
@@ -130,9 +112,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs capture from authorized card
-     */
     public function captureAuthorization(array $params): array
     {
         return $this->call(
@@ -142,9 +121,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs closing of card authorization, basing on authorization card ID
-     */
     public function closeAuthorization(array $params): array
     {
         return $this->call(
@@ -154,9 +130,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs refund
-     */
     public function refund(array $params): array
     {
         return $this->call(
@@ -166,9 +139,6 @@ class RestClient
         );
     }
 
-    /**
-     * Get sale info
-     */
     public function getSaleInfo(array $params): array
     {
         return $this->call(
@@ -178,9 +148,6 @@ class RestClient
         );
     }
 
-    /**
-     * Get sale authorization info
-     */
     public function getAuthorizationInfo(array $params): array
     {
         return $this->call(
@@ -190,9 +157,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs sale status check
-     */
     public function checkSaleStatus(array $params): array
     {
         return $this->call(
@@ -202,9 +166,6 @@ class RestClient
         );
     }
 
-    /**
-     * Direct debit sale
-     */
     public function directDebitSale(array $params): array
     {
         return $this->call(
@@ -214,9 +175,6 @@ class RestClient
         );
     }
 
-    /**
-     * Sofort sale
-     */
     public function sofortSale(array $params): array
     {
         return $this->call(
@@ -226,9 +184,6 @@ class RestClient
         );
     }
 
-    /**
-     * iDeal sale
-     */
     public function idealSale(array $params): array
     {
         return $this->call(
@@ -238,10 +193,7 @@ class RestClient
         );
     }
 
-    /**
-     * iDeal banks list
-     */
-	public function idealBankCodes(): array
+    public function idealBankCodes(): array
     {
         return $this->call(
             'ideal/bankcodes',
@@ -250,9 +202,6 @@ class RestClient
         );
     }
 
-    /**
-     * Bank transfer sale
-     */
     public function bankTransferSale(array $params): array
     {
         return $this->call(
@@ -262,9 +211,6 @@ class RestClient
         );
     }
 
-    /**
-     * PayPal sale
-     */
     public function paypalSale(array $params): array
     {
         return $this->call(
@@ -274,9 +220,6 @@ class RestClient
         );
     }
 
-    /**
-     * Cancels Paypal recurring profile
-     */
     public function paypalStopRecurring(array $params): array
     {
         return $this->call('paypal/stopRecurring',
@@ -285,9 +228,6 @@ class RestClient
         );
     }
 
-    /**
-     *  Performs resale by sale ID
-     */
     public function resaleBySale(array $params): array
     {
         return $this->call(
@@ -297,9 +237,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs resale by authorization ID
-     */
     public function resaleByAuthorization(array $params): array
     {
         return $this->call(
@@ -309,9 +246,6 @@ class RestClient
         );
     }
 
-    /**
-     * Checks if a card is enrolled in the 3D-Secure program.
-     */
     public function checkCard3DSecure(array $params): array
     {
         return $this->call(
@@ -321,9 +255,6 @@ class RestClient
         );
     }
 
-    /**
-     * Checks if a card is enrolled in the 3D-Secure program, based on the card's token.
-     */
     public function checkCard3DSecureByToken(array $params): array
     {
         return $this->call(
@@ -333,9 +264,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs sale by ID 3d secure authorization
-     */
     public function saleBy3DSecureAuthorization(array $params): array
     {
         return $this->call(
@@ -345,9 +273,15 @@ class RestClient
         );
     }
 
-    /**
-     * Perform check card
-     */
+    public function authorizeBy3DSecureAuthorization(array $params): array
+    {
+        return $this->call(
+            '3DSecure/auth',
+            self::HTTP_METHOD_POST,
+            $params
+        );
+    }
+
     public function checkCard(array $params): array
     {
         return $this->call(
@@ -357,9 +291,6 @@ class RestClient
         );
     }
 
-    /**
-     * Perform check card by token
-     */
     public function checkCardByToken(array $params): array
     {
         return $this->call(
@@ -369,9 +300,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs Apple Pay sale
-     */
     public function applePaySale(array $params): array
     {
         return $this->call(
@@ -381,9 +309,6 @@ class RestClient
         );
     }
 
-    /**
-     * Performs Apple Pay authorization
-     */
     public function applePayAuthorization(array $params): array
     {
         return $this->call(
@@ -393,9 +318,6 @@ class RestClient
         );
     }
 
-    /**
-     * Method responsible for preparing, setting state and returning answer from rest server
-     */
     protected function call(string $method, string $request, array $params): array
     {
         $this->isSuccess = false;
@@ -416,17 +338,11 @@ class RestClient
         return $response;
     }
 
-    /**
-     * Check if method is allowed
-     */
     protected function checkRequestMethod(string $method): bool
     {
         return in_array($method, self::HTTP_ALLOWED_METHODS);
     }
 
-    /**
-     * Method responsible for pushing data to REST server
-     */
     protected function pushData(string $method, string $methodType, string $request): string
     {
         $ch = curl_init();

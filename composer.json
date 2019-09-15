@@ -1,5 +1,5 @@
 {
-	"name": "paylane/php7client",
+	"name": "xzsoftware/paylane_client",
 	"description": "PayLane REST Client for PHP",
 	"license": "MIT",
 	"authors": [
@@ -14,6 +14,10 @@
 		{
 			"name": "Maciej Łebkowski",
 			"email": "m.lebkowski@gmail.com"
+		},
+		{
+			"name": "Adrian Modliszewski",
+			"email": "amodliszewski@xzsoftware.pl"
 		}
 	],
 	"require": {
