@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PayLine\Client;
+namespace PayLane\Client;
 
-use PayLine\Exception\ConnectionException;
-use PayLine\Exception\ErrorException;
-use PayLine\Exception\ValidationException;
+use PayLane\Exception\ConnectionException;
+use PayLane\Exception\ErrorException;
+use PayLane\Exception\ValidationException;
 
 class RestClient
 {
